@@ -1,0 +1,7 @@
+- name: Install Chrome
+  package:
+    name: chrome
+    state: present
+  when: chromeFlag
+#package is unrelated to node and package.js
+#gets package from os

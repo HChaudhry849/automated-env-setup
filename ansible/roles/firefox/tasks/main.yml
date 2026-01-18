@@ -1,0 +1,5 @@
+- name: Install Firefox
+  package:
+    name: firefox
+    state: present
+  when: fireFoxFlag

@@ -1,0 +1,14 @@
+- name: Install Cypress in default location
+  npm:
+    name: cypress
+    global: yes
+  when: cypressFlag and minimalSetupFlag
+
+- name: Install Cypress in full set up folder
+  npm: 
+    name: cypress
+    path: Desktop/test
+  when: cypressFlag and fullSetupFlag
+
+#refers to npm 
+#installs npm package cypress
