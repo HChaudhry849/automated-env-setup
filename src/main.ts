@@ -2,10 +2,22 @@ import { Cli } from "./cli";
 import { InputHandler } from "./inputhandler";
 import { Executor } from "./executor";
 
+async function main() {
+    const cli = new Cli();
 
-const cl = new Cli()
-const ip = new InputHandler(cl);
-const myData = ip.mapToConfigObj()
-const ex = new Executor(myData);
-//ex.executePreRequsites()
-/*RUN ALL CODE FROM HERE* */
+    // 1. Run CLI and wait for user input
+    await cli.runProg();
+
+    // 2. Process input
+    const inputHandler = new InputHandler(cli);
+    inputHandler.applyDefault();
+    const config = inputHandler.mapToConfigObj();
+
+    // 3. Execute setup
+    const executor = new Executor(config);
+
+    await executor.checkOS();
+    await executor.executeSetUp();
+}
+
+main().catch(console.error);

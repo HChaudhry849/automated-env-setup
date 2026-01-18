@@ -23,7 +23,7 @@ export class Cli {
             rl.question(question, (answer) => {
                 rl.close();
                 resolve(
-                    this.userAnswer = answer
+                    this.userAnswer = answer.toLowerCase()
                 )
             });
         })
@@ -32,8 +32,8 @@ export class Cli {
     async setUp() {
         let q1 = "What type of setup do you want? (Full, Minimal) "
         enum choice {
-            choiceA = 'Full',
-            choiceB = 'Minimal'
+            choiceA = 'full',
+            choiceB = 'minimal'
         }
 
         await this.askUser(q1)
@@ -52,8 +52,8 @@ export class Cli {
     async installCy() {
         let q2 = "Would you like to install cypress? (Yes/No) "
         enum choice {
-            choiceA = "Yes",
-            choiceB = "No"
+            choiceA = "yes",
+            choiceB = "no"
         }
 
         await this.askUser(q2)
@@ -72,8 +72,8 @@ export class Cli {
     async installWebBrw() {
         let q3 = "Would you like to install Chrome OR Firefox? "
         enum choice {
-            choiceA = "Chrome",
-            choiceB = "Firefox"
+            choiceA = "chrome",
+            choiceB = "firefox"
         }
 
         await this.askUser(q3)
@@ -103,6 +103,3 @@ export class Cli {
         this.summary()
     }
 }
-
-const cl = new Cli()
-cl.runProg()
